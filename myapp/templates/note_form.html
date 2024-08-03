@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}New Note{% endblock %}
+
+{% block content %}
+<h1 class="my-4">Create a New Note</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+        {{ form.content.label_tag }}
+        {{ form.content|add_class:"form-control" }}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a href="{% url 'note_list' %}" class="btn btn-secondary mt-4">Back to Notes</a>
+{% endblock %}
